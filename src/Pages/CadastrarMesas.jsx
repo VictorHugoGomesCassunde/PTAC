@@ -1,49 +1,44 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function CadastrarMesas() {
   const [numeroMesa, setNumeroMesa] = useState("");
-  const [capacidade, setCapacidade] = useState("");
-  const [status, setStatus] = useState("");
+  const [lugares, setLugares] = useState("");
 
-  function salvarMesa(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!numeroMesa || !capacidade || !status) {
+    if (!numeroMesa || !lugares) {
       alert("Preencha todos os campos!");
       return;
     }
-    alert(`Mesa ${numeroMesa} cadastrada com sucesso!`);
+
+    alert(`Mesa ${numeroMesa} cadastrada com ${lugares} lugares!`);
     setNumeroMesa("");
-    setCapacidade("");
-    setStatus("");
-  }
+    setLugares("");
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Cadastrar Mesa</h1>
+    <main className="container">
+      <h1>Cadastrar Mesas</h1>
+      <form onSubmit={handleSubmit} className="formulario">
+        <label>Número da Mesa:</label>
+        <input
+          type="number"
+          value={numeroMesa}
+          onChange={(e) => setNumeroMesa(e.target.value)}
+          placeholder="Ex: 5"
+        />
 
-      <form onSubmit={salvarMesa}>
-        <div>
-          <label>Número da Mesa:</label>
-          <input type="text" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)}/>
-        </div>
+        <label>Quantidade de Lugares:</label>
+        <input
+          type="number"
+          value={lugares}
+          onChange={(e) => setLugares(e.target.value)}
+          placeholder="Ex: 4"
+        />
 
-        <div>
-          <label>Capacidade:</label>
-          <input type="number" value={capacidade} onChange={(e) => setCapacidade(e.target.value)}/>
-        </div>
-
-        <div>
-          <label>Status:</label>
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
-            <option value="">Selecione...</option>
-            <option value="disponível">Disponível</option>
-            <option value="ocupada">Ocupada</option>
-          </select>
-        </div>
-
-        <button type="submit">Salvar</button>
+        <button type="submit">Cadastrar</button>
       </form>
-    </div>
+    </main>
   );
 }
 

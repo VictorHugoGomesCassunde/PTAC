@@ -21,20 +21,26 @@ function CadastrarMesas() {
       <h1>Cadastrar Mesas</h1>
       <form onSubmit={handleSubmit} className="formulario">
         <label>Número da Mesa:</label>
-        <input
-          type="number"
-          value={numeroMesa}
-          onChange={(e) => setNumeroMesa(e.target.value)}
-          placeholder="Ex: 5"
-        />
+       <label>Número da Mesa:</label>
+<input
+  type="number"
+  value={numeroMesa}
+  onChange={(e) => setNumeroMesa(e.target.value)}
+  placeholder="Ex: 5"
+  min="1"
+  max="20"
+/>
 
-        <label>Quantidade de Lugares:</label>
-        <input
-          type="number"
-          value={lugares}
-          onChange={(e) => setLugares(e.target.value)}
-          placeholder="Ex: 4"
-        />
+<label>Quantidade de Lugares:</label>
+<input
+  type="number"
+  value={lugares}
+  onChange={(e) => setLugares(e.target.value)}
+  placeholder="Ex: 4"
+  min="1"
+  max="6"
+/>
+
 
         <button type="submit">Cadastrar</button>
       </form>

@@ -2,49 +2,53 @@ import React, { useState } from "react";
 
 function ReservarMesas() {
   const [nomeCliente, setNomeCliente] = useState("");
+  const [contato, setContato] = useState("");
   const [numeroMesa, setNumeroMesa] = useState("");
   const [dataReserva, setDataReserva] = useState("");
+  const [hora, setHora] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!nomeCliente || !numeroMesa || !dataReserva) {
+    if (!nomeCliente || !contato || !numeroMesa || !dataReserva || !hora) {
       alert("Preencha todos os campos!");
       return;
     }
 
     alert(
-      `Reserva feita com sucesso!\nCliente: ${nomeCliente}\nMesa: ${numeroMesa}\nData: ${dataReserva}`
+      `Reserva confirmada!\nCliente: ${nomeCliente}\nMesa: ${numeroMesa}\nData: ${dataReserva} às ${hora}\nContato: ${contato}`
     );
 
     setNomeCliente("");
+    setContato("");
     setNumeroMesa("");
     setDataReserva("");
+    setHora("");
   };
 
   return (
     <main className="container">
-      
-   <h1>Reservar Mesa</h1>
+      <h1>Reservar Mesa</h1>
 
-   <form onSubmit={handleSubmit} className="formulario">
+      <form onSubmit={handleSubmit} className="formulario">
+        <label>Nome do Cliente:</label>
+        <input type="text" value={nomeCliente} onChange={(e) => setNomeCliente(e.target.value)} />
 
-  <label>Nome do Cliente:</label>
+        <label>Contato:</label>
+        <input type="tel" value={contato} onChange={(e) => setContato(e.target.value)} placeholder="(00) 00000-0000" />
 
-  <input type="text" value={nomeCliente}  onChange={(e) => setNomeCliente(e.target.value)} placeholder="Digite seu nome" />
+        <label>Número da Mesa:</label>
+        <input type="number" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} />
 
-   <label>Número da Mesa:</label>
+        <label>Data da Reserva:</label>
+        <input type="date" value={dataReserva} onChange={(e) => setDataReserva(e.target.value)} />
 
-  <input type="number" value={numeroMesa} onChange={(e) => setNumeroMesa(e.target.value)} placeholder="Ex: 2" />
+        <label>Horário:</label>
+        <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
 
- <label>Data da Reserva:</label>
-
-    <input type="date"  value={dataReserva} onChange={(e) => setDataReserva(e.target.value)} />
-
-<button type="submit">Reservar</button>
-
-  </form>
-  </main>
+        <button type="submit">Confirmar Reserva</button>
+      </form>
+    </main>
   );
 }
 

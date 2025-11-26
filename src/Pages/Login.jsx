@@ -10,21 +10,27 @@ function Login() {
     e.preventDefault();
 
     const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
-
-    if (!usuarioSalvo || usuarioSalvo.email !== email || usuarioSalvo.senha !== senha) {
+    if (
+      !usuarioSalvo ||
+      usuarioSalvo.email !== email ||
+      usuarioSalvo.senha !== senha
+    ) {
       alert("Usuário ou senha incorretos!");
       return;
     }
+    localStorage.setItem("token", "token-login");
 
-    localStorage.setItem("token", "fake-jwt-token");
     alert("Login realizado com sucesso!");
-    navigate("/perfil");
+
+    navigate("/minhas");
   };
 
   return (
     <main className="container">
       <h1>Login</h1>
+
       <form onSubmit={handleSubmit} className="formulario">
+
         <label>Email:</label>
         <input
           type="email"

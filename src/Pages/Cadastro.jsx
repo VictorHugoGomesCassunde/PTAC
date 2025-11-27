@@ -1,126 +1,35 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-function Cadastro() {
-  const [nome, setNome] = useState("");
-  const [sobrenome, setSobrenome] = useState("");
-  const [email, setEmail] = useState("");
-  const [rua, setRua] = useState("");
-  const [numero, setNumero] = useState("");
-  const [bairro, setBairro] = useState("");
-  const [cidade, setCidade] = useState("");
-  const [uf, setUf] = useState("");
-  const [senha, setSenha] = useState("");
-
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (
-      !nome ||
-      !sobrenome ||
-      !email ||
-      !rua ||
-      !numero ||
-      !bairro ||
-      !cidade ||
-      !uf ||
-      !senha
-    ) {
-      alert("Preencha todos os campos!");
-      return;
-    }
-    const usuario = {
-      nome,
-      sobrenome,
-      email,
-      rua,
-      numero,
-      bairro,
-      cidade,
-      uf,
-      senha,
-    };
-    localStorage.setItem("usuario", JSON.stringify(usuario));
-
-    alert("Cadastro realizado com sucesso!");
-
-    navigate("/login");
-  };
+export default function Cadastro() {
   return (
-    <main className="container">
-      <h1>Cadastro de Usuário</h1>
+    <div className="page">
+      <h2>Cadastro de Usuário</h2>
 
-      <form onSubmit={handleSubmit} className="formulario">
-        
+      <form>
         <label>Nome:</label>
-        <input
-          type="text"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+        <input type="text" />
 
         <label>Sobrenome:</label>
-        <input
-          type="text"
-          value={sobrenome}
-          onChange={(e) => setSobrenome(e.target.value)}
-        />
+        <input type="text" />
 
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <label>E-mail:</label>
+        <input type="email" />
 
         <label>Rua:</label>
-        <input
-          type="text"
-          value={rua}
-          onChange={(e) => setRua(e.target.value)}
-        />
+        <input type="text" />
 
-        <label>Número:</label>
-        <input
-          type="number"
-          value={numero}
-          onChange={(e) => setNumero(e.target.value)}
-        />
+        <label>Nº:</label>
+        <input type="text" />
 
         <label>Bairro:</label>
-        <input
-          type="text"
-          value={bairro}
-          onChange={(e) => setBairro(e.target.value)}
-        />
+        <input type="text" />
 
         <label>Cidade:</label>
-        <input
-          type="text"
-          value={cidade}
-          onChange={(e) => setCidade(e.target.value)}
-        />
+        <input type="text" />
 
         <label>UF:</label>
-        <input
-          type="text"
-          maxLength={2}
-          value={uf}
-          onChange={(e) => setUf(e.target.value.toUpperCase())}
-        />
+        <input type="text" />
 
-        <label>Senha:</label>
-        <input
-          type="password"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-        />
-
-        <button type="submit">Cadastrar</button>
+        <button type="button">Cadastrar</button>
       </form>
-    </main>
+    </div>
   );
 }
-
-export default Cadastro;

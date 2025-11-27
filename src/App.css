@@ -1,65 +1,29 @@
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #e6e6e6;
-}
-
-/* container padrão */
-.container {
-  width: 90%;
-  max-width: 500px;
-  margin: 20px auto;
-  background: white;
+.page {
+  max-width: 400px;
+  margin: 40px auto;
   padding: 20px;
+  background: #f2f2f2;
   border-radius: 10px;
 }
 
-h1 {
-  text-align: center;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* formulários */
-.formulario input {
-  width: 100%;
+input, button {
   padding: 10px;
-  margin: 6px 0 14px;
-  border-radius: 5px;
-  border: 1px solid #aaa;
+  font-size: 16px;
 }
 
 button {
-  width: 100%;
-  padding: 12px;
-  background: #0033cc;
+  background: #002776;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #0022aa;
-}
-
-/* header */
-.header {
-  background: #000f7a;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-}
-
-.footer {
-  background: #000f7a;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  margin-top: 25px;
+  background: #003faa;
 }

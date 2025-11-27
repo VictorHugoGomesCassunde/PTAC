@@ -11,6 +11,7 @@ function Header() {
         <Link to="/cadastrar">Cadastrar Mesa</Link>
         <Link to="/reservar">Reservar Mesa</Link>
         <Link to="/minhas">Minhas Reservas</Link>
+        <Link to="/cardapio">cardapio</Link>
       </nav>
     </header>
   );

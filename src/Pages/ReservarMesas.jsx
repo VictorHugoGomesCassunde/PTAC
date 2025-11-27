@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function ReservarMesas() {
   const [nome, setNome] = useState("");
@@ -6,64 +6,70 @@ function ReservarMesas() {
   const [data, setData] = useState("");
   const [hora, setHora] = useState("");
   const [mesa, setMesa] = useState("");
+  const [pessoas, setPessoas] = useState("");
 
-  function confirmarReserva(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!nome || !contato || !data || !hora || !mesa) {
+    if (!nome || !contato || !data || !hora || !mesa || !pessoas) {
       alert("Preencha todos os campos!");
       return;
     }
 
-    alert(`Reserva feita para ${nome} na mesa ${mesa}.`);
+    const nova = {
+      id: Date.now(),
+      nome,
+      contato,
+      data,
+      hora,
+      mesa,
+      pessoas,
+    };
+
+    const reservasSalvas =
+      JSON.parse(localStorage.getItem("reservas")) || [];
+
+    localStorage.setItem(
+      "reservas",
+      JSON.stringify([...reservasSalvas, nova])
+    );
+
+    alert("Reserva cadastrada!");
+
     setNome("");
     setContato("");
     setData("");
     setHora("");
     setMesa("");
-  }
+    setPessoas("");
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Reservar Mesa</h1>
+    <main className="container">
+      <h1>Fazer Reserva</h1>
 
-      <form onSubmit={confirmarReserva}>
-        <div>
-          <label>Nome do Cliente:</label>
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-        </div>
+      <form onSubmit={handleSubmit} className="formulario">
+        <label>Nome do Cliente:</label>
+        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
 
-        <div>
-          <label>Contato:</label>
-          <input
-            type="text"
-            value={contato}
-            onChange={(e) => setContato(e.target.value)}
-          />
-        </div>
+        <label>Contato:</label>
+        <input type="text" value={contato} onChange={(e) => setContato(e.target.value)} />
 
-        <div>
-          <label>Data:</label>
-          <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
-        </div>
+        <label>Data da reserva:</label>
+        <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
 
-        <div>
-          <label>Hora:</label>
-          <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
-        </div>
+        <label>Hora:</label>
+        <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
 
-        <div>
-          <label>Número da Mesa:</label>
-          <input type="text" value={mesa} onChange={(e) => setMesa(e.target.value)}/>
-        </div>
+        <label>Mesa:</label>
+        <input type="number" min="1" max="20" value={mesa} onChange={(e) => setMesa(e.target.value)} />
 
-        <button type="submit">Confirmar</button>
+        <label>Quantidade de Pessoas:</label>
+        <input type="number" min="1" max="6" value={pessoas} onChange={(e) => setPessoas(e.target.value)} />
+
+        <button type="submit">Confirmar Reserva</button>
       </form>
-    </div>
+    </main>
   );
 }
 

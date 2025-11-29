@@ -16,8 +16,12 @@ function ReservarMesas() {
       return;
     }
 
+    let ultimoId = parseInt(localStorage.getItem("ultimoIdReserva")) || 0;
+    const novoId = ultimoId + 1;
+    localStorage.setItem("ultimoIdReserva", novoId);
+
     const nova = {
-      id: Date.now(),
+      id: novoId, 
       nome,
       contato,
       data,
@@ -50,22 +54,50 @@ function ReservarMesas() {
 
       <form onSubmit={handleSubmit} className="formulario">
         <label>Nome do Cliente:</label>
-        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} />
+        <input
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
 
         <label>Contato:</label>
-        <input type="text" value={contato} onChange={(e) => setContato(e.target.value)} />
+        <input
+          type="number"
+          value={contato}
+          onChange={(e) => setContato(e.target.value)}
+        />
 
         <label>Data da reserva:</label>
-        <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
+        <input
+          type="date"
+          value={data}
+          onChange={(e) => setData(e.target.value)}
+        />
 
         <label>Hora:</label>
-        <input type="time" value={hora} onChange={(e) => setHora(e.target.value)} />
+        <input
+          type="time"
+          value={hora}
+          onChange={(e) => setHora(e.target.value)}
+        />
 
         <label>Mesa:</label>
-        <input type="number" min="1" max="20" value={mesa} onChange={(e) => setMesa(e.target.value)} />
+        <input
+          type="number"
+          min="1"
+          max="20"
+          value={mesa}
+          onChange={(e) => setMesa(e.target.value)}
+        />
 
         <label>Quantidade de Pessoas:</label>
-        <input type="number" min="1" max="6" value={pessoas} onChange={(e) => setPessoas(e.target.value)} />
+        <input
+          type="number"
+          min="1"
+          max="6"
+          value={pessoas}
+          onChange={(e) => setPessoas(e.target.value)}
+        />
 
         <button type="submit">Confirmar Reserva</button>
       </form>

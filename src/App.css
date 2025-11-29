@@ -63,3 +63,19 @@ button:hover {
   padding: 10px;
   margin-top: 25px;
 }
+app.css
+
+.cardapio-lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.cardapio-img {
+  display: flex;
+  max-width: 1000%;
+  height: auto;
+  border-radius: 10px;
+}
+

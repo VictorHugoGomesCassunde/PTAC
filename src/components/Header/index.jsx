@@ -4,14 +4,15 @@ import styles from "./Header.module.css";
 function Header() {
   return (
     <header className={styles.header}>
-      <span className={styles.title}>Reservas de Mesas</span>
+      <span className={styles.title}>Restaurante Rei do Figado</span>
 
       <nav className={styles.nav}>
         <Link to="/">Home</Link>
-        <Link to="/cadastrar">Cadastrar Mesa</Link>
+        <Link to="/cardapio">Cardápio</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/cadastro">Cadastro</Link> 
         <Link to="/reservar">Reservar Mesa</Link>
         <Link to="/minhas">Minhas Reservas</Link>
-        <Link to="/cardapio">cardapio</Link>
       </nav>
     </header>
   );

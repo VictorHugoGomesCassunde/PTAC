@@ -13,6 +13,7 @@ function Cardapio() {
             alt="Fígado de galinha acebolado"
           />
           <p>Fígado Acebolado</p>
+          <p>R$ 20,00</p>
         </div>
 
         <div className="item">
@@ -21,6 +22,7 @@ function Cardapio() {
             alt="Bife de fígado macio"
           />
           <p>Bife de Fígado</p>
+          <p>R$ 30,00</p>
         </div>
 
         <div className="item">
@@ -29,6 +31,7 @@ function Cardapio() {
             alt="Prato típico nordestino"
           />
           <p>Carne de Sol com Baião</p>
+          <p>R$ 25,00</p>
         </div>
 
       </div>

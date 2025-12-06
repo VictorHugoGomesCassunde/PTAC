@@ -6,7 +6,7 @@ import Cadastro from "./Pages/Cadastro";
 import ReservarMesas from "./Pages/ReservarMesas";
 import MinhasReservas from "./Pages/MinhasReservas";
 import Header from "./components/Header";
-import Cardapio from "./Pages/Cardapio";
+import Cardapio from "./Pages/cardapio";
 
 
 function AppRoutes() {
